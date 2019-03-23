@@ -1,9 +1,9 @@
 trigger:
 - master
 
-pool: Default
+# pool: Default
 
-steps:
+# steps:
 
 # - script: dotnet build MvcTest
 #   displayName: Build
