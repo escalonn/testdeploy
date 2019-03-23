@@ -1,7 +1,7 @@
-trigger: none
+trigger:
+- master
 
-pool:
-  name: Default
+pool:Default
 
 steps:
 
@@ -14,7 +14,7 @@ steps:
     command: publish
     publishWebProjects: false
     projects: MvcTest
-    arguments: -o ../publish
+    arguments: -o publish
     modifyOutputPath: false
 
 - task: AzureRmWebAppDeployment@4
