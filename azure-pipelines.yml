@@ -14,7 +14,7 @@ steps:
     command: publish
     publishWebProjects: false
     projects: MvcTest
-    arguments: -o publish
+    arguments: -o $(System.DefaultWorkingDirectory)/publish
     modifyOutputPath: false
 
 - task: AzureRmWebAppDeployment@4
