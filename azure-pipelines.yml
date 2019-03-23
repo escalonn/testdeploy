@@ -5,25 +5,40 @@ pool: Default
 
 steps:
 
-- script: dotnet build MvcTest
-  displayName: Build
+# - script: dotnet build MvcTest
+#   displayName: Build
 
-# - script: dotnet publish MvcTest -o ../publish
-#   displayName: 'dotnet publish'
+# # - script: dotnet publish MvcTest -o ../publish
+# #   displayName: 'dotnet publish'
 
-- task: DotNetCoreCLI@2
-  displayName: Publish
-  inputs:
-    command: publish
-    publishWebProjects: false
-    projects: '**/MvcTest.csproj'
-    arguments: --no-build --output $(Build.ArtifactStagingDirectory)
-    modifyOutputPath: false
+# - task: DotNetCoreCLI@2
+#   displayName: Publish
+#   inputs:
+#     command: publish
+#     publishWebProjects: false
+#     projects: '**/MvcTest.csproj'
+#     arguments: --no-build --output $(Build.ArtifactStagingDirectory)
+#     modifyOutputPath: false
+
+# - task: AzureRmWebAppDeployment@4
+#   displayName: 'Azure App Service deploy'
+#   inputs:
+#     azureSubscription: nick-azure
+#     WebAppName: escalona1902test
+#     packageForLinux: $(Build.ArtifactStagingDirectory)
+#     removeAdditionalFilesFlag: true
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+
+- script: dotnet publish MvcTest -o publish
+  displayName: 'dotnet publish'
 
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure App Service deploy'
   inputs:
     azureSubscription: nick-azure
     WebAppName: escalona1902test
-    packageForLinux: $(Build.ArtifactStagingDirectory)
-    removeAdditionalFilesFlag: true
+    packageForLinux: publish
