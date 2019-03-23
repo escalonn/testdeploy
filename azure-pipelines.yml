@@ -5,7 +5,7 @@ pool:
 
 steps:
 
-- script: dotnet publish MvcTest -o publish
+- script: dotnet publish MvcTest -o ../publish
   displayName: 'dotnet publish'
 
 - task: AzureRmWebAppDeployment@4
