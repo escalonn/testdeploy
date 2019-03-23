@@ -1,6 +1,7 @@
 trigger: none
 
-pool: Default
+pool:
+  name: Default
 
 steps:
 
