@@ -26,3 +26,4 @@ steps:
     azureSubscription: nick-azure
     WebAppName: escalona1902test
     packageForLinux: $(Build.ArtifactStagingDirectory)
+    removeAdditionalFilesFlag: true
