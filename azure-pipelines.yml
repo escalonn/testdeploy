@@ -16,8 +16,8 @@ steps:
   inputs:
     command: publish
     publishWebProjects: false
-    projects: MvcTest
-    arguments: --no-build -o $(System.DefaultWorkingDirectory)/publish
+    projects: '**/MvcTest.csproj'
+    arguments: --no-build --output $(Build.ArtifactStagingDirectory)
     modifyOutputPath: false
 
 - task: AzureRmWebAppDeployment@4
@@ -25,4 +25,4 @@ steps:
   inputs:
     azureSubscription: nick-azure
     WebAppName: escalona1902test
-    packageForLinux: publish
+    packageForLinux: $(Build.ArtifactStagingDirectory)
