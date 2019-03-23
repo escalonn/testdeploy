@@ -5,8 +5,16 @@ pool:
 
 steps:
 
-- script: dotnet publish MvcTest -o ../publish
-  displayName: 'dotnet publish'
+# - script: dotnet publish MvcTest -o ../publish
+#   displayName: 'dotnet publish'
+
+- task: DotNetCoreCLI@2
+  displayName: Publish
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: MvcTest
+    arguments: -o ../publish
 
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure App Service deploy'
