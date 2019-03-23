@@ -5,6 +5,9 @@ pool: Default
 
 steps:
 
+- script: dotnet build
+  displayName: Build
+
 # - script: dotnet publish MvcTest -o ../publish
 #   displayName: 'dotnet publish'
 
@@ -14,7 +17,7 @@ steps:
     command: publish
     publishWebProjects: false
     projects: MvcTest
-    arguments: -o $(System.DefaultWorkingDirectory)/publish
+    arguments: --no-build -o $(System.DefaultWorkingDirectory)/publish
     modifyOutputPath: false
 
 - task: AzureRmWebAppDeployment@4
