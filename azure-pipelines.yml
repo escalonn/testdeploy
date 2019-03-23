@@ -15,6 +15,7 @@ steps:
     publishWebProjects: false
     projects: MvcTest
     arguments: -o ../publish
+    modifyOutputPath: false
 
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure App Service deploy'
